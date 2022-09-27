@@ -1,6 +1,4 @@
 import React from "react"
-import Button from "react-bootstrap/Button"
-import {Link} from "react-router-dom"
 import './Navbar.css'
 
 export default function Navbar() {
@@ -9,6 +7,7 @@ export default function Navbar() {
         <nav className = "navbar">
             <h3 className = "navbar-logo">T Car Shop</h3>
             <div className = "navbar-routing">
+            
             </div>
             
             

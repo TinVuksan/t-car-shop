@@ -7,12 +7,13 @@
 
 
 .navbar {
+
     height: 10vh;
     display: flex;
     box-shadow: 1px 1px 5px 4px #5050505a;
     margin-top:2vh;
     /* align-items:center; */
-    background-color: #ffffff;
+    background-color: #ffffffe8;
     
 }
 .hr-element {

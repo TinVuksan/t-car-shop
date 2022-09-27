@@ -18,7 +18,6 @@ export default function HomePage() {
          .then((res) => {
 			
             const Array = res.data.item
-            console.log(Array)
             setVehicles(Array)
 			
 		})
@@ -41,14 +40,14 @@ export default function HomePage() {
     .slice(pagesVisited, pagesVisited + vehiclesPerPage)
     .map((vehicle) => {
         return(
-            <Card className="card" key={vehicle.id}>
+            <Card className="card bg-light" key={vehicle.id}>
             <Card.Img className = "card-image" variant = "top" src = {logo} />
             <Card.Body>
                 <Card.Title>{vehicle.VehicleMake} {vehicle.VehicleModel}</Card.Title>
                 <Card.Text>
                     To see more info about this vehicle, click the button below
                 </Card.Text>
-                <Button variant="info">See details</Button>
+                <Button variant="dark">See details</Button>
             </Card.Body>
             </Card>
         );
