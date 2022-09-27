@@ -5,14 +5,8 @@ export default function Navbar() {
     return (
         <>
         <nav className = "navbar">
-            <h3 className = "navbar-logo">T Car Shop</h3>
-            <div className = "navbar-routing">
-            
-            </div>
-            
-            
+            <h3 className = "navbar-logo">T Car Shop</h3>   
         </nav>
-        <hr className="hr-element"/>
         </>
         
     )

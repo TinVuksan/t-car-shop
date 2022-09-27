@@ -66,6 +66,7 @@ export default function HomePage() {
      
         <div className="card-container">
         {displayVehicles}
+
         <ReactPaginate
         previousLabel = {'Previous'}
         nextLabel = {'Next'}
@@ -77,17 +78,8 @@ export default function HomePage() {
         activeClassName = {"paginationActive"}
         pageLinkClassName = {"btn btn-primary"}
         />
-        </div>
-        
- 
-        
- 
- 
-        
-      
-      
-        
-        
+
+        </div> 
         </>
         
     ) 
