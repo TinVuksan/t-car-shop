@@ -9,7 +9,8 @@ export default function App() {
         <Router>
             <Routes>
                 <Route path = "/" element = {<HomePage></HomePage>} />
-                {/* ... */}
+                {/* TO BE ADDED */}
+                {/* ... */} 
                 {/*<Route path = "/AddVehicle" element = {<AddVehicle></AddVehicle>} /> */}
                 {/*<Route path = "/EditVehicle" element = {<EditVehicle></EditVehicle>} /> */}
                 {/* ... */}

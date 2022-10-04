@@ -4,20 +4,22 @@
     
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     flex-wrap:wrap;
     width:100%;
-
-  
+    
+}
+.card {
+    min-height:55vh;
+    max-width:16vw;
+    max-height:65vh;
+    box-shadow: 2.5px 1.5px 5px 2px #004cff2f;
+    margin-top:5vh;
     
 }
 
-.card {
-    max-width:16vw;
+.card-animated {
     margin:auto;
-    margin-top:5vh;
-    box-shadow: 2.5px 1.5px 5px 2px rgba(42, 42, 42, 0.46);
+    
 }
 
 

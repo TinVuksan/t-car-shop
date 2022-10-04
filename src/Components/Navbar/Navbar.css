@@ -6,25 +6,38 @@
 
 .navbar {
 
-    height: 10vh;
+    height: 12vh;
     display: flex;
     box-shadow: 1px 1px 5px 4px #5050505a;
-    margin-top:2vh;
-    /* align-items:center; */
+    margin-top:1.5vh;
     background-color: #ffffffe8;
     
 }
-.hr-element {
-    margin-top:0px;
-    color:#00000071;
-}
 .navbar-logo {
-    font-family:"Roboto", sans-serif;
+
     font-weight:400;
     font-size:35px;
     color:#1f1f3d;
     margin-left:1.5vw;
     margin-top:1vh;
+    
+}
+
+.navbar-filter {
+    
+    margin-right:1vw;
+}
+
+.navbar-sort {
+
+    margin-right:1vw;
+    min-width:12vw;
+
+}
+
+.navbar-functions {
+
+    display:flex;
     
 }
 
