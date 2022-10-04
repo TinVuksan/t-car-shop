@@ -27,7 +27,6 @@ const store = new Store();
 Axios.get('https://api.baasic.com/beta/t-car-shop/resources/Vehicles/')
      .then((res) => {
         store.setVehicle(toJS(res.data.item));
-        
     })
     .catch((error) => {
         console.log(error)

@@ -4,20 +4,20 @@
 }
 
 
-.navbar {
 
-    height: 12vh;
+.navbar {
+    
+    height: 11vh;
     display: flex;
     box-shadow: 1px 1px 5px 4px #5050505a;
     margin-top:1.5vh;
-    background-color: #ffffffe8;
+    background-color: #efefefe8;
     
 }
 .navbar-logo {
-
-    font-weight:400;
+    font-family: "Russo One", sans-serif;
     font-size:35px;
-    color:#1f1f3d;
+    color:#4c4c4c;
     margin-left:1.5vw;
     margin-top:1vh;
     
@@ -39,6 +39,14 @@
 
     display:flex;
     
+    
+}
+
+.navbar-link {
+    color:rgb(87, 87, 87);
+    margin-top:1.7vh;
+    letter-spacing: 0.2vw;
+    margin-right:3vw;
 }
 
 

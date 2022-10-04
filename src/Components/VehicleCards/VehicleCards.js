@@ -3,7 +3,6 @@ import store from '../../Stores/Store'
 import {motion} from 'framer-motion'
 import Button from "react-bootstrap/Button"
 import Card from 'react-bootstrap/Card'
-import logo from '../../Common/Images/mono_logo.png'
 import ReactPaginate from 'react-paginate'
 import { observer } from 'mobx-react'
 
@@ -30,7 +29,7 @@ import { observer } from 'mobx-react'
         .map((vehicle) => 
                 <motion.div className = "card-animated" whileHover = {{scale:1.1}} >
                     <Card className="card bg-light" key={vehicle.id} onClick = {() => {console.log('Boop boop')}} >
-                     <Card.Img className = "card-image" variant = "top" src = {logo} />
+                     <Card.Img className = "card-image" variant = "top" src = {vehicle.VehicleImage} alt = {vehicle.VehicleImage} />
                      <Card.Body>
                          <Card.Title>{vehicle.VehicleMake} {vehicle.VehicleModel}</Card.Title>
                          <Card.Text>
