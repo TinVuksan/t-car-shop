@@ -17,6 +17,7 @@ import { observer } from 'mobx-react'
     const changePage = ({selected}) => {
         setPageNumber(selected)
     }
+    console.log(store.vehicle);
        
     return(
         
@@ -28,7 +29,7 @@ import { observer } from 'mobx-react'
         .slice(pagesVisited, pagesVisited + vehiclesPerPage)
         .map((vehicle) => 
                 <motion.div className = "card-animated" whileHover = {{scale:1.1}} >
-                    <Card className="card bg-light" key={vehicle.id} onClick = {() => {console.log('Boop boop')}} >
+                    <Card className="card bg-light" key={vehicle.id} onClick = {() => {console.log(vehicle.id)}} >
                      <Card.Img className = "card-image" variant = "top" src = {vehicle.VehicleImage} alt = {vehicle.VehicleImage} />
                      <Card.Body>
                          <Card.Title>{vehicle.VehicleMake} {vehicle.VehicleModel}</Card.Title>

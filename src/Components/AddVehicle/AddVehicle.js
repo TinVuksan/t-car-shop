@@ -13,28 +13,10 @@ import { useNavigate } from "react-router-dom"
 export default function DodajVozilo() {
     
     const Navigate = useNavigate()
-    const [image, setImage] = useState("");
+
     const [formData, setFormData] = useState({
 		Make: "", Model: "", Power: "", RegDate: "",  RegExpDate: "", Info: "", Image: ""
 	})
-    
-   
-    const uploadImage = () => {
-        const imageData = new FormData();
-        imageData.append("file", image);
-        imageData.append("upload_preset", "qxxjw25t");
-        console.log(image);
-
-        Axios.post(
-            "https://api.cloudinary.com/v1_1/dbrpnxiq5/image/upload", imageData)
-        .then((res) => formData.Image = res.data.url)
-        .catch((error) => {
-            console.log(error)
-        })
-        
-    } 
-
-  
 
     const handleChange = (e) => {
         setFormData(prevFormData => {
@@ -59,20 +41,20 @@ export default function DodajVozilo() {
          params.append('VehicleRegDate', formData.RegDate);
          params.append('VehicleRegExpDate', formData.RegExpDate);
          Axios.post("https://api.baasic.com/beta/t-car-shop/resources/Vehicles/", params)
-         .then((response) => {
+         .then(() => {
 			
-                console.log(response.data)
+                window.location.reload();
 				
 			
 		})
+
         .catch((error) => {
             console.log(error)
         })
     }
     const handleSubmit = () => {
-        uploadImage()
         addVehicle()
-       // Navigate("/", {replace:true})
+        Navigate("/", {replace:true})
     }
     
     return (
@@ -173,7 +155,8 @@ export default function DodajVozilo() {
             <Form.Control 
             onChange = {handleChange} 
             name = "Info" 
-            as = "textarea" 
+            as = "textarea"
+            placeholder = "Good vehicle, nice looking..." 
             value = {formData.Info}
 
             
@@ -181,15 +164,19 @@ export default function DodajVozilo() {
             </FloatingLabel>
             </Form.Group>
  
-        <Form.Group className = "mb-3">
-            <Form.Label className = "image-label">Image upload</Form.Label>
+            <Form.Group className = "mb-3">
+            <FloatingLabel
+            label = "Image URL">
+
             <Form.Control 
-            onChange = {(e) => {setImage(e.target.files[0])}}
+            onChange = {handleChange} 
             name = "Image" 
-            type = "file"
+            type = "text" 
+            placeholder = "Enter image URL" 
             value = {formData.Image}
             />
-        </Form.Group>
+            </FloatingLabel>
+            </Form.Group>
         
             
             
