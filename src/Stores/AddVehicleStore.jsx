@@ -9,7 +9,6 @@ class AddStore {
     }
 
     addVehicle(formData) {
-        console.log(formData);
         var params = new URLSearchParams();
         params.append('VehicleInfo', formData.Info);
         params.append('VehicleMake', formData.Make);
@@ -20,7 +19,6 @@ class AddStore {
         params.append('VehicleRegExpDate', formData.RegExpDate);
             Axios.post("https://api.baasic.com/beta/t-car-shop/resources/Vehicles/", params)
             .then(() => {
-                console.log(formData);
                 window.location.reload();
               
             })

@@ -17,7 +17,6 @@ function Filter() {
             placeholder = "Audi, BMW, Mercedes..." 
             value = {store.filter}
             onChange = {(e) => store.setFilter(e.target.value)}
-            
             />
         </FloatingLabel>
         

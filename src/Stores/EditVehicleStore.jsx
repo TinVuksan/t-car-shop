@@ -42,11 +42,8 @@ class EditStore {
         params.append('VehicleRegExpDate', vehicleData.RegExpDate);
 
         Axios.put(`https://api.baasic.com/beta/t-car-shop/resources/Vehicles/${vehicleData.id}`, params)
-        .then((response) => {
-            console.log(vehicleData);
-            console.log(response);
-            console.log(editStore.vehicle);
-          
+        .then(() => {
+            window.location.reload();
         })
         .catch((error) => {
             console.log(error)

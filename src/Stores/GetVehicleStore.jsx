@@ -20,10 +20,6 @@ class GetStore {
         ); 
     }
 
-    setSortCheck(sortCheck) {
-        this.sortCheck = !sortCheck;
-    }
-
     setVehicle(vehicle) {
         this.vehicle = vehicle;
     }
@@ -32,10 +28,6 @@ class GetStore {
         this.filter = filter;
     }
     
-    setSort(sort) {
-        this.sort = sort
-    }
-
     setPage(page) {
         this.page = page;
     }
@@ -57,12 +49,9 @@ const getData = () => {
      .then((res) => {
             if(res.data.item === 0) {
                 getStore.setPage(1);
-                console.log(getStore.page);
-            }
 
+            }
             getStore.setVehicle(toJS(res.data.item));
-            console.log(getStore.page);
-            
     })
     .catch((error) => {
         console.log(error);
@@ -72,6 +61,4 @@ const getData = () => {
 autorun(() => {
     getData();
 })
-
-
     export default getStore;
