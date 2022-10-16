@@ -1,59 +1,31 @@
 import React from "react"
 import "./AddVehicle.css"
-import Navbar from "../Navbar/Navbar"
+import Navbar from "../../Components/Navbar/Navbar"
+import addStore from "../../Stores/AddVehicleStore"
 import {useState} from "react"
 import {Col, Row,FloatingLabel, Form, Button} from 'react-bootstrap'
-import Axios from "axios"
+import { observer } from 'mobx-react'
 import { useNavigate } from "react-router-dom"
 
-
-
-
-
-export default function DodajVozilo() {
-    
+function DodajVozilo() {
     const Navigate = useNavigate()
-
     const [formData, setFormData] = useState({
-		Make: "", Model: "", Power: "", RegDate: "",  RegExpDate: "", Info: "", Image: ""
-	})
+	 	Make: "", Model: "", Power: "", RegDate: "",  RegExpDate: "", Info: "", Image: ""
+	 })
 
-    const handleChange = (e) => {
+     const handleChange = (e) => {
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
                 [e.target.name]: e.target.value
+                
             }
             
         })
-        
     }
-    const addVehicle = () => {
-        
-        var params = new URLSearchParams();
-        console.log(formData);
-        
-         params.append('VehicleInfo', formData.Info);
-         params.append('VehicleMake', formData.Make);
-         params.append('VehicleImage', formData.Image);
-         params.append('VehicleModel', formData.Model);
-         params.append('VehiclePower', formData.Power);
-         params.append('VehicleRegDate', formData.RegDate);
-         params.append('VehicleRegExpDate', formData.RegExpDate);
-         Axios.post("https://api.baasic.com/beta/t-car-shop/resources/Vehicles/", params)
-         .then(() => {
-			
-                window.location.reload();
-				
-			
-		})
-
-        .catch((error) => {
-            console.log(error)
-        })
-    }
+    
     const handleSubmit = () => {
-        addVehicle()
+        addStore.addVehicle(formData);
         Navigate("/", {replace:true})
     }
     
@@ -93,8 +65,6 @@ export default function DodajVozilo() {
             </FloatingLabel>
             </Form.Group>
             </Col>
-
-            
         </Row>
 
         <Row>
@@ -114,9 +84,8 @@ export default function DodajVozilo() {
             </FloatingLabel>
             </Form.Group>
             </Col>
-
-            
         </Row>
+
         <Row>
         <Col>
             <Form.Group className = "mb-3">
@@ -148,38 +117,34 @@ export default function DodajVozilo() {
             </Form.Group>
         </Col>
         </Row>
-            <Form.Group className = "mb-3">
-            <FloatingLabel
-            label = "Vehicle info"
-            >
-            <Form.Control 
-            onChange = {handleChange} 
-            name = "Info" 
-            as = "textarea"
-            placeholder = "Good vehicle, nice looking..." 
-            value = {formData.Info}
 
-            
-            />
-            </FloatingLabel>
-            </Form.Group>
- 
-            <Form.Group className = "mb-3">
-            <FloatingLabel
-            label = "Image URL">
+        <Form.Group className = "mb-3">
+        <FloatingLabel
+        label = "Vehicle info"
+        >
+        <Form.Control 
+        onChange = {handleChange} 
+        name = "Info" 
+        as = "textarea"
+        placeholder = "Good vehicle, nice looking..." 
+        value = {formData.Info}
+        />
+        </FloatingLabel>
+        </Form.Group>
 
-            <Form.Control 
-            onChange = {handleChange} 
-            name = "Image" 
-            type = "text" 
-            placeholder = "Enter image URL" 
-            value = {formData.Image}
-            />
-            </FloatingLabel>
-            </Form.Group>
+        <Form.Group className = "mb-3">
+        <FloatingLabel
+        label = "Image URL">
+        <Form.Control 
+        onChange = {handleChange} 
+        name = "Image" 
+        type = "text" 
+        placeholder = "Enter image URL" 
+        value = {formData.Image}
+        />
+        </FloatingLabel>
+        </Form.Group>
         
-            
-            
         <Button className="addForm-submit" variant = "success" onClick = {handleSubmit}>Submit</Button>
         </Form>
          
@@ -187,3 +152,5 @@ export default function DodajVozilo() {
            
     )
 }
+
+export default observer(DodajVozilo);

@@ -1,0 +1,11 @@
+.prevPage {
+    display:flex;
+    justify-content: flex-start;
+    height:10vh;
+    margin-top:25vh;
+}
+
+.nextPage {
+    height:10vh;
+    margin-top:25vh;
+}

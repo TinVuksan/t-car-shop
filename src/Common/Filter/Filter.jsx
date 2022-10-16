@@ -1,12 +1,12 @@
 import React from "react"
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import FormControl from 'react-bootstrap/FormControl'
-import store from "../../Stores/Store"
+import store from '../../Stores/GetVehicleStore'
 import {observer} from 'mobx-react'
 
 function Filter() {
     return (
-        <>
+        
         <FloatingLabel
         controlId = "filterInput"
         label = "Search"
@@ -17,9 +17,10 @@ function Filter() {
             placeholder = "Audi, BMW, Mercedes..." 
             value = {store.filter}
             onChange = {(e) => store.setFilter(e.target.value)}
+            
             />
         </FloatingLabel>
-        </>
+        
     )
 }
 

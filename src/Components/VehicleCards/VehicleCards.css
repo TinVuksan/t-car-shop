@@ -1,0 +1,27 @@
+.card-container {
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    width:fit-content;
+    margin:0px auto;
+    margin-top:5vh;
+    
+}
+.card {
+    margin-right:15px;
+    margin-left:15px;
+    min-height:60vh;
+    max-height: 70vh;
+    width:16vw;
+    box-shadow: 1.5px 2px 8px 1px #004cff84;
+    margin-top:5vh;
+}
+
+.card-animated {
+    margin:auto;
+}
+
+.card-image {
+    height:25vh;
+}

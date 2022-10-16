@@ -1,7 +1,6 @@
 import './HomePage.css'
-import Navbar from '../Navbar/Navbar'
-import VehicleCards from '../VehicleCards/VehicleCards'
-import store from '../../Stores/Store'
+import Navbar from '../../Components/Navbar/Navbar'
+import VehicleCards from '../../Components/VehicleCards/VehicleCards'
 export default function HomePage() {
    
     return(
