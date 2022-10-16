@@ -49,7 +49,7 @@ const getData = () => {
         getStore.setPage(1);
          apiURL = `https://api.baasic.com/beta/t-car-shop/resources/Vehicles?rpp=${5}`;
     } else {
-        apiURL = `https://api.baasic.com/beta/t-car-shop/resources/Vehicles?page=${getStore.page}&rpp=${5}`;
+        apiURL = `https://api.baasic.com/beta/t-car-shop/resources/Vehicles?page=${getStore.page}&rpp=${5}&sort=VehicleMake`;
     }
          
     
