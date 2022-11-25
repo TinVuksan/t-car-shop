@@ -4,20 +4,29 @@ class GetStore {
     vehicle = [];
     filter = "";
     page = 1;
+    sort = "";
+    properties = [];
     constructor() {
         makeObservable(this, {
             vehicle: observable,
             filter: observable,
             page:observable,
+            sort:observable,
+            properties: observable,
             filteredVehicles: computed,
+            maxPageNum: computed,
 
         });
     }
 
     get filteredVehicles() {
         return this.vehicle
-        .filter((vehicle) => vehicle.VehicleMake.toLocaleLowerCase().includes(this.filter.toLocaleLowerCase())
+        .filter(vehicle => vehicle.VehicleMake.toLocaleLowerCase().includes(this.filter.toLocaleLowerCase())
         ); 
+    }
+
+    get maxPageNum() {
+        return Math.ceil(this.properties.totalRecords/this.properties.recordsPerPage)
     }
 
     setVehicle(vehicle) {
@@ -29,7 +38,18 @@ class GetStore {
     }
     
     setPage(page) {
-        this.page = page;
+        if(page === 0) {
+            this.page = 1;
+        }
+        this.page = Math.abs(page);
+    }
+
+    setSort(sort) {
+        this.sort = sort;
+    }
+
+    setProperties(properties) {
+        this.properties = properties;
     }
 }
 
@@ -37,22 +57,12 @@ const getStore = new GetStore();
 const getData = () => {
 
     let apiURL = '';
-    if(getStore.page <=0) {
-        getStore.setPage(1);
-         apiURL = `https://api.baasic.com/beta/t-car-shop/resources/Vehicles?rpp=${5}`;
-    } else {
-        apiURL = `https://api.baasic.com/beta/t-car-shop/resources/Vehicles?page=${getStore.page}&rpp=${5}&sort=VehicleMake`;
-    }
-         
-    
+    apiURL = `https://api.baasic.com/beta/t-car-shop/resources/Vehicles?page=${getStore.page}&rpp=${5}&sort=VehicleMake|${getStore.sort}`;
     Axios.get(apiURL)
      .then((res) => {
-            if(res.data.item === 0) {
-                getStore.setPage(1);
-
-            }
-            getStore.setVehicle(toJS(res.data.item));
-    })
+            getStore.setProperties(toJS(res.data));
+            getStore.setVehicle(toJS(res.data.item));     
+        })
     .catch((error) => {
         console.log(error);
     })

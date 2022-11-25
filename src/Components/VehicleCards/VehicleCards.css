@@ -5,7 +5,7 @@
     flex-wrap:wrap;
     width:fit-content;
     margin:0px auto;
-    margin-top:5vh;
+    margin-top:3vh;
     
 }
 .card {
@@ -24,4 +24,9 @@
 
 .card-image {
     height:25vh;
+}
+
+.pageCount {
+    font-size:24px;
+    margin:50px auto;
 }

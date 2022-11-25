@@ -31,17 +31,7 @@ class EditStore {
 
     handleSubmit = (vehicle) => {
         const vehicleData = toJS(vehicle)
-        console.log(vehicleData);
-        let params = new URLSearchParams();
-        params.append('VehicleInfo', vehicleData.Info);
-        params.append('VehicleMake', vehicleData.Make);
-        params.append('VehicleImage', vehicleData.Image);
-        params.append('VehicleModel', vehicleData.Model);
-        params.append('VehiclePower', vehicleData.Power);
-        params.append('VehicleRegDate', vehicleData.RegDate);
-        params.append('VehicleRegExpDate', vehicleData.RegExpDate);
-
-        Axios.put(`https://api.baasic.com/beta/t-car-shop/resources/Vehicles/${vehicleData.id}`, params)
+        Axios.patch(`https://api.baasic.com/beta/t-car-shop/resources/Vehicles/${vehicleData.id}`, vehicleData)
         .then(() => {
             window.location.reload();
         })

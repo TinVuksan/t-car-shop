@@ -30,16 +30,13 @@
 
 .navbar-sort {
 
-    margin-right:1vw;
-    min-width:12vw;
+    margin-right:3vw;
+    margin-top:1.5vh;
 
 }
 
 .navbar-functions {
-
     display:flex;
-    
-    
 }
 
 .navbar-link {
@@ -48,6 +45,7 @@
     letter-spacing: 0.2vw;
     margin-right:3vw;
 }
+
 
 
 

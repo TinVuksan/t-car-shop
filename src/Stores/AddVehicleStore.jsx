@@ -1,4 +1,4 @@
-import {makeObservable, action} from 'mobx';
+import {makeObservable, toJS, action} from 'mobx';
 import Axios from 'axios'
 class AddStore {
 
@@ -9,17 +9,19 @@ class AddStore {
     }
 
     addVehicle(formData) {
-        var params = new URLSearchParams();
-        params.append('VehicleInfo', formData.Info);
-        params.append('VehicleMake', formData.Make);
-        params.append('VehicleImage', formData.Image);
-        params.append('VehicleModel', formData.Model);
-        params.append('VehiclePower', formData.Power);
-        params.append('VehicleRegDate', formData.RegDate);
-        params.append('VehicleRegExpDate', formData.RegExpDate);
-            Axios.post("https://api.baasic.com/beta/t-car-shop/resources/Vehicles/", params)
+       // var params = new URLSearchParams();
+        const vehicleData = formData;
+        console.log(vehicleData);
+        // params.append('VehicleInfo', formData.Info);
+        // params.append('VehicleMake', formData.Make);
+        // params.append('VehicleImage', formData.Image);
+        // params.append('VehicleModel', formData.Model);
+        // params.append('VehiclePower', formData.Power);
+        // params.append('VehicleRegDate', formData.RegDate);
+        // params.append('VehicleRegExpDate', formData.RegExpDate);
+            Axios.post("https://api.baasic.com/beta/t-car-shop/resources/Vehicles/", vehicleData)
             .then(() => {
-                window.location.reload();
+                console.log(vehicleData);
               
             })
 

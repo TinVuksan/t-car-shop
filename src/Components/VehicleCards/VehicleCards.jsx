@@ -2,21 +2,25 @@ import React from 'react'
 import './VehicleCards.css'
 import getStore from '../../Stores/GetVehicleStore'
 import {motion} from 'framer-motion'
-import Button from "react-bootstrap/Button"
 import Card from 'react-bootstrap/Card'
 import { observer } from 'mobx-react'
 import EditModal from '../Modal/EditModal'
 import editStore from '../../Stores/EditVehicleStore'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
  function VehicleCards() {
 
     function editVehicle(vehicle) {
         editStore.setVehicle(vehicle);
     }
-
     return(
         
         <>
-        <Button variant="dark" className = "prevPage" onClick = {() => {getStore.setPage(getStore.page -1)}}>&lt;</Button>
+        {console.log(getStore.properties)}
+        { getStore.page !== 1 &&
+        <ArrowBackIosNewIcon fontSize="large" className="prevPage" onClick = {() => {getStore.setPage(getStore.page -1)}}/>
+        }  
+        
         {getStore.filteredVehicles
         .map((vehicle) => 
                 <motion.div key={vehicle.id} className = "card-animated" whileHover = {{scale:1.05}} onClick = {() => {editVehicle(vehicle)}}>
@@ -33,8 +37,11 @@ import editStore from '../../Stores/EditVehicleStore'
                      
                 </motion.div>
         )}
-        <Button variant="dark" className = "nextPage" onClick = {() => {getStore.setPage(getStore.page + 1)}}>&gt;</Button>
+        {getStore.properties.page !== getStore.maxPageNum &&
+        <ArrowForwardIosIcon fontSize="large" className="prevPage" onClick = {() => {getStore.setPage(getStore.page + 1)}} />
+        }
         <EditModal />
+        
         </>
 
     );
