@@ -1,5 +1,7 @@
-import {makeObservable, toJS, action} from 'mobx';
+import {makeObservable, toJS, action, autorun} from 'mobx';
+import getStore from './GetVehicleStore';
 import Axios from 'axios'
+
 class AddStore {
 
     constructor() {
@@ -9,20 +11,11 @@ class AddStore {
     }
 
     addVehicle(formData) {
-       // var params = new URLSearchParams();
+        
         const vehicleData = formData;
-        console.log(vehicleData);
-        // params.append('VehicleInfo', formData.Info);
-        // params.append('VehicleMake', formData.Make);
-        // params.append('VehicleImage', formData.Image);
-        // params.append('VehicleModel', formData.Model);
-        // params.append('VehiclePower', formData.Power);
-        // params.append('VehicleRegDate', formData.RegDate);
-        // params.append('VehicleRegExpDate', formData.RegExpDate);
             Axios.post("https://api.baasic.com/beta/t-car-shop/resources/Vehicles/", vehicleData)
             .then(() => {
-                console.log(vehicleData);
-              
+                
             })
 
             .catch((error) => {
@@ -32,5 +25,7 @@ class AddStore {
 }
 
 const addStore = new AddStore();
-
+autorun(() => {
+    getStore.getData();
+})
 export default addStore;

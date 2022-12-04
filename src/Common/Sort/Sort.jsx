@@ -8,7 +8,6 @@ function Sort() {
     return (
         <Dropdown className="navbar-sort">
                 <Dropdown.Toggle variant="dark">
-                        {/* {getStore.sort == "asc" ? "Ascending" : "Descending"} */}
                         Sort vehicles
                 </Dropdown.Toggle>
 

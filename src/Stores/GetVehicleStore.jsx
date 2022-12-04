@@ -1,5 +1,5 @@
 import {autorun, makeObservable, computed, toJS, observable} from 'mobx';
-import Axios from 'axios'
+import { VehicleAPI } from '../Common/API/VehicleAPI';
 class GetStore {
     vehicle = [];
     filter = "";
@@ -51,24 +51,17 @@ class GetStore {
     setProperties(properties) {
         this.properties = properties;
     }
+    
+    async getData() {
+        const res = await VehicleAPI.getAll(this.page, 5, this.sort);
+        this.setProperties(toJS(res.data));
+        this.setVehicle(toJS(res.data.item));
+    }
 }
 
 const getStore = new GetStore(); 
-const getData = () => {
-
-    let apiURL = '';
-    apiURL = `https://api.baasic.com/beta/t-car-shop/resources/Vehicles?page=${getStore.page}&rpp=${5}&sort=VehicleMake|${getStore.sort}`;
-    Axios.get(apiURL)
-     .then((res) => {
-            getStore.setProperties(toJS(res.data));
-            getStore.setVehicle(toJS(res.data.item));     
-        })
-    .catch((error) => {
-        console.log(error);
-    })
-}
 
 autorun(() => {
-    getData();
+    getStore.getData();
 })
     export default getStore;

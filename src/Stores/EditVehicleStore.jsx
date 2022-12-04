@@ -1,5 +1,6 @@
 import {makeObservable, toJS, observable, action} from 'mobx';
-import Axios from 'axios';
+import { VehicleAPI } from '../Common/API/VehicleAPI';
+import Axios from 'axios'
 class EditStore {
     vehicle = [{
         id: "", Make: "", Model: "", Power: "", RegDate: "",  RegExpDate: "", Info: "", Image: "",
@@ -29,15 +30,16 @@ class EditStore {
 
     
 
-    handleSubmit = (vehicle) => {
+    handleSubmit =  async (vehicle) => {
         const vehicleData = toJS(vehicle)
-        Axios.patch(`https://api.baasic.com/beta/t-car-shop/resources/Vehicles/${vehicleData.id}`, vehicleData)
-        .then(() => {
-            window.location.reload();
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+        // await Axios.patch(`https://api.baasic.com/beta/t-car-shop/resources/Vehicles/${vehicleData.id}`, vehicleData)
+        // .then(() => {
+        //     //window.location.reload();
+        // })
+        // .catch((error) => {
+        //     console.log(error)
+        // })
+        await VehicleAPI.editVehicle(vehicleData.id, vehicleData);
     }
 }
 
