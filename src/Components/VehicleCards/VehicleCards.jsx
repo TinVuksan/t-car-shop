@@ -1,38 +1,40 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 import './VehicleCards.css'
 import getStore from '../../Stores/GetVehicleStore'
 import {motion} from 'framer-motion'
 import Card from 'react-bootstrap/Card'
 import { observer } from 'mobx-react'
-import EditModal from '../Modal/EditModal'
+import { Button } from 'react-bootstrap'
 import editStore from '../../Stores/EditVehicleStore'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
  function VehicleCards() {
 
-    function editVehicle(vehicle) {
-        editStore.setVehicle(vehicle);
-    }
     return(
         
         <>
         {console.log(getStore.properties)}
-        { getStore.page !== 1 &&
+        {getStore.page !== 1 &&
         <ArrowBackIosNewIcon fontSize="large" className="prevPage" onClick = {() => {getStore.setPage(getStore.page -1)}}/>
         }  
-        
         {getStore.filteredVehicles
         .map((vehicle) => 
-                <motion.div key={vehicle.id} className = "card-animated" whileHover = {{scale:1.05}} onClick = {() => {editVehicle(vehicle)}}>
-                    <Card className="card bg-light"  onClick = {editStore.showModal} >
+                <motion.div key={vehicle.id} className = "card-animated" whileHover = {{scale:1.05}}>
+                    <Card className="card bg-light">
                      <Card.Img className = "card-image" variant = "top" src = {vehicle.VehicleImage} alt = "Vehicle image" />
                      <Card.Body>
-                         <Card.Title>{vehicle.VehicleMake} {vehicle.VehicleModel}</Card.Title>
+                         <Card.Title><strong>{vehicle.VehicleMake} {vehicle.VehicleModel}</strong></Card.Title>
                          <Card.Text>
-                             {vehicle.VehicleInfo}
+                            <br />
+                            <strong>Info:</strong> {vehicle.VehicleInfo}<br />
+                            <strong>Power:</strong> {vehicle.VehiclePower} kW <br />
+                            <strong>Reg date:</strong> {vehicle.VehicleRegDate}
                          </Card.Text>
                      </Card.Body>
-                     
+                     <Card.Footer className="card-button-container">
+                     <Link to = "/Edit"><Button variant = "info" onClick={() => {editStore.setVehicle(vehicle)}}>Edit Vehicle</Button></Link>
+                     <Button variant = "dark" onClick = {(e) => {e.stopPropagation(); editStore.deleteVehicle(vehicle.id)}}>Delete vehicle</Button>
+                     </Card.Footer>
                      </Card>
                      
                 </motion.div>
@@ -40,14 +42,10 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
         {getStore.properties.page !== getStore.maxPageNum &&
         <ArrowForwardIosIcon fontSize="large" className="prevPage" onClick = {() => {getStore.setPage(getStore.page + 1)}} />
         }
-        <EditModal />
-        
         </>
 
     );
  
-    
-
 }
 
 export default observer(VehicleCards);

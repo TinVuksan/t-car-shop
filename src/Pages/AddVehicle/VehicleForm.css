@@ -2,12 +2,19 @@
     display:flex;
 }
 
-.addForm-container {
+.form-container {
     position:relative;
-    margin: 3vh 0vw;
+    margin: 3vh auto;
     right:8%;
 }
-.addForm {
+.image-container {
+  position:relative;
+  margin:25vh auto;
+}
+.image-container h1 {
+  font-family:'Ubuntu', 'sans-serif';
+}
+.form {
     
     -webkit-border-radius: 10px 10px 10px 10px;
   	border-radius: 10px 10px 10px 10px;
@@ -22,7 +29,7 @@
 
 }
 
-.addForm-title {
+.form-title {
 	text-align: center;
 	margin-bottom:15px;
 
@@ -32,7 +39,7 @@
     margin-left:0.1vw;
 }
 
-.addForm-submit {
+.form-submit {
     position:absolute;
     bottom:1.5vh;
     

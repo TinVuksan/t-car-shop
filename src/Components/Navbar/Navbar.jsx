@@ -1,4 +1,3 @@
-import React from "react"
 import './Navbar.css'
 import Filter from "../../Common/Filter/Filter"
 import Sort from "../../Common/Sort/Sort"

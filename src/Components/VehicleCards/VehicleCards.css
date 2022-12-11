@@ -30,3 +30,7 @@
     font-size:24px;
     margin:50px auto;
 }
+.card-button-container {
+    display:flex;
+    justify-content: space-between;
+}

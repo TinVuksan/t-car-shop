@@ -1,6 +1,6 @@
-import {makeObservable, toJS, action, autorun} from 'mobx';
+import {makeObservable, action, autorun} from 'mobx';
+import { VehicleAPI } from '../Common/API/VehicleAPI';
 import getStore from './GetVehicleStore';
-import Axios from 'axios'
 
 class AddStore {
 
@@ -10,17 +10,10 @@ class AddStore {
         });
     }
 
-    addVehicle(formData) {
+    addVehicle = async (formData) => {
         
         const vehicleData = formData;
-            Axios.post("https://api.baasic.com/beta/t-car-shop/resources/Vehicles/", vehicleData)
-            .then(() => {
-                
-            })
-
-            .catch((error) => {
-                console.log(error)
-            })
+        VehicleAPI.addVehicle(vehicleData);
     }
 }
 

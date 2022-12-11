@@ -12,7 +12,6 @@ import { observer } from 'mobx-react'
         <h3 className="pageCount">Current page: {getStore.properties.page}/{getStore.maxPageNum}</h3>
         </div> 
         </>
-        
     ) 
 }
 

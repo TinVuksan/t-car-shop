@@ -23,5 +23,13 @@ export const VehicleAPI = {
             method:'POST',
             data:data
         })
+    },
+
+    deleteVehicle: async function(id) {
+        await api.request({
+            url:`/Vehicles/${id}`,
+            method:'DELETE'
+        })
+        alert(`Vehicle ID ${id} successfully deleted!`);
     }
 }

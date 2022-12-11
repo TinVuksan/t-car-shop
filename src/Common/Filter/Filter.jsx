@@ -1,4 +1,3 @@
-import React from "react"
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import FormControl from 'react-bootstrap/FormControl'
 import store from '../../Stores/GetVehicleStore'
